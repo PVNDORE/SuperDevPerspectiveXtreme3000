@@ -1,4 +1,4 @@
-package entities;
+package beans;
 
 /**
  * Class representing a user of the app.

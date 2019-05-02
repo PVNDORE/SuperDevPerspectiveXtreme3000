@@ -1,7 +1,7 @@
 package beans;
 
 /**
- * Abstract class, extended by all the entities.
+ * Abstract class, extended by all the beans.
  */
 public abstract class Entity {
     /**
@@ -20,7 +20,7 @@ public abstract class Entity {
      * @return The int value of the attribute.
      */
     public int getId() {
-        return id;
+        return this.id;
     }
 
     /**

@@ -19,7 +19,7 @@ public final class Topic extends Entity {
     /**
      * Default constructor
      */
-    private Topic() {
+    public Topic() {
     }
 
     /**
@@ -49,7 +49,7 @@ public final class Topic extends Entity {
      * @return The name of the topic.
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
@@ -65,7 +65,7 @@ public final class Topic extends Entity {
      * @return The list of discussions of the topic.
      */
     public List<Discussion> getDiscussions() {
-        return discussions;
+        return this.discussions;
     }
 
     /**

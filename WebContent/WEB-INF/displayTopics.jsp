@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Sixpence | Portal</title>
+<title>DevPerspective</title>
 <meta http-equiv="content-language" content="en-us" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="author" content="Author Name Goes Here" />
@@ -23,19 +23,19 @@
     
       <h4>Topics</h4>
       <dl>
-        <a href="displayDiscussions">Developpement WEB</a>
+        <a href="displayDiscussions?title=Developpement WEB">Developpement WEB</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions">developpement oriente object</a>
+        <a href="displayDiscussions?title=developpement oriente object">developpement oriente object</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions">gestion de projet</a>
+        <a href="displayDiscussions?title=gestion de projet">gestion de projet</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions">management d'equipe</a><br>
+        <a href="displayDiscussions?title=management d'equipe">management d'equipe</a><br>
         
       </dl>
       

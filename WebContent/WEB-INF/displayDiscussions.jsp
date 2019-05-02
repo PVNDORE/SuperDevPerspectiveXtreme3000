@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-<title>Sixpence | Portal</title>
+<title>DevPerspective</title>
 <meta http-equiv="content-language" content="en-us" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="author" content="Author Name Goes Here" />
@@ -20,8 +20,7 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-    
-      <h4>${title }</h4>
+      <h4>${title}</h4>
     </div>
   </div>
 <div id="footer">

@@ -1,5 +1,10 @@
 package beans;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static schemas.UserDbSchema.*;
+
 /**
  * Class representing a user of the app.
  */
@@ -22,7 +27,7 @@ public final class User extends Entity {
     /**
      * Defines if the user is admin or not.
      */
-    private boolean isAdmin;
+    private boolean admin;
 
     /**
      * Default constructor
@@ -41,7 +46,7 @@ public final class User extends Entity {
         this.pseudo = pseudo;
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.admin = isAdmin;
     }
 
     /**
@@ -57,7 +62,23 @@ public final class User extends Entity {
         this.pseudo = pseudo;
         this.email = email;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.admin = isAdmin;
+    }
+
+    /**
+     * User's constructor from result set.
+     * @param rs The result set from the database.
+     */
+    public User(ResultSet rs) {
+        try {
+            this.id = rs.getInt(ID);
+            this.pseudo = rs.getString(LABEL);
+            this.admin = rs.getBoolean(ADMIN);
+            this.email = rs.getString(EMAIL);
+            this.password = rs.getString(EMAIL);
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the user init.\n" + e.getMessage());
+        }
     }
 
     /**
@@ -113,7 +134,7 @@ public final class User extends Entity {
      * @return The value of the attribute.
      */
     public boolean isAdmin() {
-        return this.isAdmin;
+        return this.admin;
     }
 
     /**
@@ -121,6 +142,6 @@ public final class User extends Entity {
      * @param admin The boolean value to set.
      */
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        admin = admin;
     }
 }

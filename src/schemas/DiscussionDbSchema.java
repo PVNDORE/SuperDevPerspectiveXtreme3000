@@ -38,5 +38,4 @@ public abstract class DiscussionDbSchema {
      * Stores the title field aliased by the table name.
      */
     public static final String AL_LABEL = TABLE + "." + LABEL;
-
 }

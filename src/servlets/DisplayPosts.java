@@ -1,6 +1,8 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,14 @@ public class DisplayPosts extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
+		List<String> myList= new ArrayList<String>();
+		
+		myList.add("cc sa va ?");
+		myList.add("wé é toi ");
+		myList.add("tu veu voir ma bite ??");
+		
+		request.setAttribute("listPost", myList);
+		request.setAttribute("title", request.getParameter("title"));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
 	}
 }

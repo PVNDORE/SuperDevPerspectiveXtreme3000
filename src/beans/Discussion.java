@@ -1,6 +1,12 @@
 package beans;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+
+import static schemas.DiscussionDbSchema.ID;
+import static schemas.DiscussionDbSchema.LABEL;
+import static schemas.DiscussionDbSchema.TOPIC;
 
 /**
  * Class representing a discussion.
@@ -60,6 +66,20 @@ public final class Discussion extends Entity {
         this.status = status;
         this.posts = posts;
         this.topicId = topicId;
+    }
+
+    /**
+     * Discussion's constructor from result set.
+     * @param rs The result set from the database.
+     */
+    public Discussion(ResultSet rs) {
+        try {
+            this.id = rs.getInt(ID);
+            this.title = rs.getString(LABEL);
+            this.topicId = rs.getInt(TOPIC);
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the discussion init.\n" + e.getMessage());
+        }
     }
 
     /**

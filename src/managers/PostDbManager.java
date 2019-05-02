@@ -2,13 +2,13 @@ package managers;
 
 import static schemas.PostDbSchema.*;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import beans.Post;
-import beans.User;
 
 public class PostDbManager extends DbManager {
 	
@@ -23,7 +23,8 @@ public class PostDbManager extends DbManager {
      */
     public boolean dbCreate(Post post) {
         try {
-            String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE,DATE,CONTENT,DISCUSSION,USER);
+            String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE, DATE, CONTENT,
+                    DISCUSSION, USER);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, post.getDatePublished().toString());
@@ -53,8 +54,8 @@ public class PostDbManager extends DbManager {
      */
     public Post dbLoad(int id) {
         try {
-            Post post = new Post();
-            String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
+            Post post = null;
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
@@ -62,17 +63,37 @@ public class PostDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                post.setId(rs.getInt(ID));
-                post.setAuthor(new UserDbManager().dbLoad(rs.getInt(USER)));
-                post.setContent(rs.getString(CONTENT));
-                post.setDatePublished(rs.getDate(DATE));
-                post.setDiscussionId(rs.getInt(DISCUSSION));
-                
-                
-                // TODO : Get the associated discussions ?
+                post = new Post(rs);
             }
 
             return post;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the post loading.\n" + e.getMessage());
+
+            return null;
+        }
+    }
+
+    /**
+     * Loads all post associated to a specific discussion from the database.
+     * @param id The id of the discussion.
+     * @return The loaded posts if success.
+     */
+    public List<Post> dbLoadFromDiscussion(int id) {
+        try {
+            List<Post> posts = new ArrayList<>();
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, DISCUSSION);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            st.setInt(1, id);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                posts.add(new Post(rs));
+            }
+
+            return posts;
         } catch (SQLException e) {
             System.err.println("An error occurred with the post loading.\n" + e.getMessage());
 
@@ -87,7 +108,8 @@ public class PostDbManager extends DbManager {
      */
     public boolean dbUpdate(Post post) {
         try {
-            String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE,DATE,CONTENT,DISCUSSION,USER,ID);
+            String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE, DATE,
+                    CONTENT, DISCUSSION, USER, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, post.getDatePublished().toString());

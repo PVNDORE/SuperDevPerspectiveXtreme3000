@@ -1,4 +1,4 @@
-package entities;
+package beans;
 
 /**
  * Class defining the status of a discussion.

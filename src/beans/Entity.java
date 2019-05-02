@@ -1,4 +1,4 @@
-package entities;
+package beans;
 
 /**
  * Abstract class, extended by all the entities.

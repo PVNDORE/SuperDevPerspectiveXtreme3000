@@ -27,7 +27,7 @@ public class UserDbManager extends DbManager {
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());
-            st.setString(2, Boolean.toString(user.isAdmin()));
+            st.setBoolean(2,user.isAdmin());
             st.setString(3, user.getEmail());
             st.setString(4, user.getPassword());
             st.executeUpdate();
@@ -90,7 +90,7 @@ public class UserDbManager extends DbManager {
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());
-            st.setString(2, Boolean.toString(user.isAdmin()));
+            st.setBoolean(2, user.isAdmin());
             st.setString(3, user.getEmail());
             st.setString(4, user.getPassword());
             st.setInt(5, user.getId());

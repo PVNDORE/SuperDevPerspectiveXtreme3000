@@ -20,11 +20,6 @@ public abstract class TopicDbSchema {
     public static final String LABEL = "label";
 
     /**
-     * Stores the user field name.
-     */
-    public static final String USER = "user_id";
-
-    /**
      * Stores the id field aliased by the table name.
      */
     public static final String AL_ID = TABLE + "." + ID;
@@ -33,9 +28,4 @@ public abstract class TopicDbSchema {
      * Stores the label field aliased by the table name.
      */
     public static final String AL_LABEL = TABLE + "." + LABEL;
-
-    /**
-     * Stores the user field aliased by the table name.
-     */
-    public static final String AL_USER = TABLE + "." + USER;
 }

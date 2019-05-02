@@ -1,59 +1,61 @@
 package managers;
 
-import entities.Topic;
+import entities.Status;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static schemas.TopicDbSchema.*;
+import static schemas.StatusDbSchema.TABLE;
+import static schemas.StatusDbSchema.ID;
+import static schemas.StatusDbSchema.LABEL;
 
 /**
- * Manager class used to manage topic entities.
+ * Manager class used to manage status entities.
  */
-public final class TopicDbManager extends DbManager {
+public final class StatusDbManager extends DbManager {
     /**
-     * TopicDbManager's default constructor.
+     * StatusDbManager's default constructor.
      */
-    public TopicDbManager() {
+    public StatusDbManager() {
         super();
     }
 
     /**
-     * Creates a topic into the database and set its associated id.
-     * @param topic The topic to save.
+     * Creates a status into the database and set its associated id.
+     * @param status The status to save.
      * @return true if success else false.
      */
-    public boolean dbCreate(Topic topic) {
+    public boolean dbCreate(Status status) {
         try {
             String query = String.format("INSERT INTO %s (%s) VALUES (?)", TABLE, LABEL);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
-            st.setString(1, topic.getName());
+            st.setString(1, status.getName());
             st.executeUpdate();
 
             ResultSet rs = st.getGeneratedKeys();
 
             if (rs.next()) {
-                topic.setId(rs.getInt(1));
+                status.setId(rs.getInt(1));
             }
 
             return true;
         } catch (SQLException e) {
-            System.err.println("An error occurred with the topic creating.\n" + e.getMessage());
+            System.err.println("An error occurred with the status creating.\n" + e.getMessage());
 
             return false;
         }
     }
 
     /**
-     * Loads a topic from the database.
-     * @param id The id of the topic to load.
-     * @return The loaded topic if success else false.
+     * Loads a status from the database.
+     * @param id The id of the status to load.
+     * @return The loaded status if success else false.
      */
-    public Topic dbLoad(int id) {
+    public Status dbLoad(int id) {
         try {
-            Topic topic = new Topic();
+            Status status = new Status();
             String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
@@ -62,55 +64,54 @@ public final class TopicDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                topic.setId(rs.getInt(ID));
-                topic.setName(rs.getString(LABEL));
-                // TODO : Get the associated discussions ?
+                status.setId(rs.getInt(ID));
+                status.setName(rs.getString(LABEL));
             }
 
-            return topic;
+            return status;
         } catch (SQLException e) {
-            System.err.println("An error occurred with the topic loading.\n" + e.getMessage());
+            System.err.println("An error occurred with the status loading.\n" + e.getMessage());
 
             return null;
         }
     }
 
     /**
-     * Updates a topic into the database.
-     * @param topic The topic to update.
+     * Updates a status into the database.
+     * @param status The status to update.
      * @return true if success else false.
      */
-    public boolean dbUpdate(Topic topic) {
+    public boolean dbUpdate(Status status) {
         try {
             String query = String.format("UPDATE %s SET %s = ? WHERE %s = ?", TABLE, LABEL, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
-            st.setString(1, topic.getName());
-            st.setInt(2, topic.getId());
+            st.setString(1, status.getName());
+            st.setInt(2, status.getId());
 
             return st.executeUpdate() != 0;
         } catch (SQLException e) {
-            System.err.println("An error occurred with the topic's update.\n" + e.getMessage());
+            System.err.println("An error occurred with the status's update.\n" + e.getMessage());
 
             return false;
         }
     }
 
     /**
-     * Deletes a topic entity from the database.s
-     * @param topic The topic to delete.
+     * Deletes a status entity from the database.s
+     * @param status The status to delete.
      * @return true if success else false.
      */
-    public boolean dbDelete(Topic topic) {
+    public boolean dbDelete(Status status) {
         try {
             String query = String.format("DELETE FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
-            st.setInt(1, topic.getId());
+            st.setInt(1, status.getId());
 
             return st.executeUpdate() != 0;
         } catch (SQLException e) {
-            System.err.println("An error occurred with the topic's update.\n" + e.getMessage());
+            System.err.println("An error occurred with the status's update.\n" + e.getMessage());
 
             return false;
         }

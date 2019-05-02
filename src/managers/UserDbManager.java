@@ -53,8 +53,8 @@ public class UserDbManager extends DbManager {
      */
     public User dbLoad(int id) {
         try {
-            User user = new User();
-            String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
+            User user = null;
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
@@ -62,14 +62,41 @@ public class UserDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                user.setId(rs.getInt(ID));
-                user.setPseudo(rs.getString(LABEL));
-                user.setAdmin(rs.getBoolean(ADMIN));
-                user.setEmail(rs.getString(EMAIL));
-                user.setPassword(rs.getString(EMAIL));
-                
-                // TODO : Get the associated discussions ?
+                user = new User(rs);
             }
+
+            rs.close();
+
+            return user;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the user loading.\n" + e.getMessage());
+
+            return null;
+        }
+    }
+
+    /**
+     * Loads a user from auth data from the database.
+     * @param email The email of the user to load.
+     * @param password The password of the user to load.
+     * @return The loaded user if success else false.
+     */
+    public User dbLoadFromAuth(String email, String password) {
+        try {
+            User user = null;
+            String query = String.format("SELECT * FROM %s WHERE %s = ? && %s = ?", TABLE, EMAIL, PASSWORD);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            st.setString(1, email);
+            st.setString(2, password);
+
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                user = new User(rs);
+            }
+
+            rs.close();
 
             return user;
         } catch (SQLException e) {

@@ -70,7 +70,7 @@ public final class StatusDbManager extends DbManager {
      */
     public Status dbLoad(int id) {
         try {
-            Status status = new Status();
+            Status status = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
@@ -79,9 +79,10 @@ public final class StatusDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                status.setId(rs.getInt(ID));
-                status.setName(rs.getString(LABEL));
+                status = new Status(rs);
             }
+
+            rs.close();
 
             return status;
         } catch (SQLException e) {

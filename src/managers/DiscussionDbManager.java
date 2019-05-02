@@ -57,8 +57,8 @@ public final class DiscussionDbManager extends DbManager {
      */
     public Discussion dbLoad(int id) {
         try {
-            Discussion discussion = new Discussion();
-            String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
+            Discussion discussion = null;
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
@@ -66,11 +66,10 @@ public final class DiscussionDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                discussion.setId(rs.getInt(ID));
-                discussion.setTitle(rs.getString(LABEL));
-                discussion.setTopicId(rs.getInt(TOPIC));
-                // TODO: See if getting all the associated posts.
+                discussion = new Discussion(rs);
             }
+
+            rs.close();
 
             return discussion;
         } catch (SQLException e) {
@@ -86,7 +85,6 @@ public final class DiscussionDbManager extends DbManager {
      */
     public List<Discussion> dbLoadPublic() {
         try {
-            Discussion discussion;
             ArrayList<Discussion> discussions = new ArrayList<>();
             String query = String.format("SELECT * FROM %s WHERE %s != ?", TABLE, STATUS);
             PreparedStatement st = this.getConnector().prepareStatement(query);
@@ -95,19 +93,72 @@ public final class DiscussionDbManager extends DbManager {
 
             ResultSet rs = st.executeQuery();
 
-            if (rs.next()) {
-                discussion = new Discussion();
-
-                discussion.setId(rs.getInt(ID));
-                discussion.setTitle(rs.getString(LABEL));
-                discussion.setTopicId(rs.getInt(TOPIC));
-                // TODO: See if getting all the associated posts.
-                discussions.add(discussion);
+            while (rs.next()) {
+                discussions.add(new Discussion(rs));
             }
+
+            rs.close();
 
             return discussions;
         } catch (SQLException e) {
-            System.err.println("An error occurred with the discussion loading.\n" + e.getMessage());
+            System.err.println("An error occurred with the discussions loading.\n" + e.getMessage());
+
+            return null;
+        }
+    }
+
+    /**
+     * Loads all discussions which have the pending status from the database.
+     * @return The loaded discussions if success.
+     */
+    public List<Discussion> dbLoadPending() {
+        try {
+            ArrayList<Discussion> discussions = new ArrayList<>();
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, STATUS);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            st.setInt(1, new StatusDbManager().getId(StatusDbManager.PENDING));
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                discussions.add(new Discussion(rs));
+            }
+
+            rs.close();
+
+            return discussions;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the discussions loading.\n" + e.getMessage());
+
+            return null;
+        }
+    }
+
+    /**
+     * Loads all discussions from a specific topic from the database.
+     * @return The loaded discussions if success.
+     */
+    public List<Discussion> dbLoadFromTopic(int id) {
+        try {
+            Discussion discussion;
+            ArrayList<Discussion> discussions = new ArrayList<>();
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, TOPIC);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            st.setInt(1, id);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                discussions.add(new Discussion(rs));
+            }
+
+            rs.close();
+
+            return discussions;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the discussions loading.\n" + e.getMessage());
 
             return null;
         }

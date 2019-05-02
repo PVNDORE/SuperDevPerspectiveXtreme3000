@@ -1,5 +1,10 @@
 package beans;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import static schemas.UserDbSchema.*;
+
 /**
  * Class representing a user of the app.
  */
@@ -58,6 +63,24 @@ public final class User extends Entity {
         this.email = email;
         this.password = password;
         this.isAdmin = isAdmin;
+    }
+
+    /**
+     * User's constructor from result set.
+     * @param rs The result set from the database.
+     */
+    public User(ResultSet rs) {
+        try {
+            this.setId(rs.getInt(ID));
+            this.setPseudo(rs.getString(LABEL));
+            this.setAdmin(rs.getBoolean(ADMIN));
+            this.setEmail(rs.getString(EMAIL));
+            this.setPassword(rs.getString(EMAIL));
+
+            // TODO : Get the associated discussions ?
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the user init.\n" + e.getMessage());
+        }
     }
 
     /**

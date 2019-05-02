@@ -1,5 +1,9 @@
 package beans;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import static schemas.StatusDbSchema.*;
+
 /**
  * Class defining the status of a discussion.
  */
@@ -30,6 +34,19 @@ public final class Status extends Entity {
      */
     public Status(int id, String name) {
         this.name = name;
+    }
+
+    /**
+     * Status's constructor from result set.
+     * @param rs The result set from the database.
+     */
+    public Status(ResultSet rs) {
+        try {
+            this.setId(rs.getInt(ID));
+            this.setName(rs.getString(LABEL));
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the status init.\n" + e.getMessage());
+        }
     }
 
     /**

@@ -25,9 +25,9 @@ public abstract class DiscussionDbSchema {
     public static final String TOPIC = "topic_id";
 
     /**
-     * Stores the user field name.
+     * Stores the status field name.
      */
-    public static final String USER = "user_id";
+    public static final String STATUS = "status_id";
 
     /**
      * Stores the id field aliased by the table name.
@@ -38,9 +38,4 @@ public abstract class DiscussionDbSchema {
      * Stores the title field aliased by the table name.
      */
     public static final String AL_LABEL = TABLE + "." + LABEL;
-
-    /**
-     * Stores the user field aliased by the table name.
-     */
-    public static final String AL_USER = TABLE + "." + USER;
 }

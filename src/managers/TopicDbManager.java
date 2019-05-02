@@ -5,6 +5,8 @@ import beans.Topic;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import static schemas.TopicDbSchema.*;
 
@@ -53,7 +55,7 @@ public final class TopicDbManager extends DbManager {
      */
     public Topic dbLoad(int id) {
         try {
-            Topic topic = new Topic();
+            Topic topic = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
@@ -62,10 +64,10 @@ public final class TopicDbManager extends DbManager {
             ResultSet rs = st.executeQuery();
 
             if (rs.next()) {
-                topic.setId(rs.getInt(ID));
-                topic.setName(rs.getString(LABEL));
-                // TODO : Get the associated discussions ?
+                topic = new Topic(rs);
             }
+
+            rs.close();
 
             return topic;
         } catch (SQLException e) {
@@ -113,6 +115,32 @@ public final class TopicDbManager extends DbManager {
             System.err.println("An error occurred with the topic's update.\n" + e.getMessage());
 
             return false;
+        }
+    }
+
+    /**
+     * Gets the list of all topics from the database.
+     * @return The list of topics.
+     */
+    public List<Topic> queryAll() {
+        try {
+            List<Topic> topics = new ArrayList<>();
+            String query = String.format("SELECT * FROM %s", TABLE);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                topics.add(new Topic(rs));
+            }
+
+            rs.close();
+
+            return topics;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the topics loading.\n" + e.getMessage());
+
+            return null;
         }
     }
 }

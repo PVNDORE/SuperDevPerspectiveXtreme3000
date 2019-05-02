@@ -18,8 +18,8 @@
   <h1>DevPerspective</h1>
 </div>
 <div id="wrapper">
-  <div id="content-wrapper" style="width:100%;">
-    <div id="content" style="">
+  <div id="content-wrapper">
+    <div id="content">
     
       <h4>Topics</h4>
       <dl>
@@ -35,11 +35,13 @@
         
       </dl>
       <dl>
-        <a href="displayDiscussions">management d'equipe</a>
+        <a href="displayDiscussions">management d'equipe</a><br>
         
       </dl>
-    </div>
-  </div>
+      
+        
+       
+	</div>
 <div id="footer">
   <p>Copyright &copy; 1850 &ndash; 2006 Sixpence. All rights reserved. </p>
   <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Sadhana Ganapathiraju</a>. 

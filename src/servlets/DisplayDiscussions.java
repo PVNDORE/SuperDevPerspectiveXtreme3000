@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 public class DisplayDiscussions extends HttpServlet 
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{		
+	{			
+		request.setAttribute("title", request.getParameter("title"));
 		this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
 	}
 }

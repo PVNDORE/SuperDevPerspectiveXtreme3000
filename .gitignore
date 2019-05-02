@@ -27,6 +27,4 @@ hs_err_pid*
 /src/.idea/*
 .idea/*
 *.iml
-
-
 .classpath

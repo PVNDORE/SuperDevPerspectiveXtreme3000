@@ -22,6 +22,11 @@ public final class Discussion extends Entity {
     private List<Post> posts;
 
     /**
+     * Stores the discussion topic id.
+     */
+    private int topicId;
+
+    /**
      * Default constructor.
      */
     public Discussion() {
@@ -32,11 +37,13 @@ public final class Discussion extends Entity {
      * @param title The title to set.
      * @param status The status to set.
      * @param posts The list of post to set.
+     * @param topicId The id of the topic.
      */
-    public Discussion(String title, Status status, List<Post> posts) {
+    public Discussion(String title, Status status, List<Post> posts, int topicId) {
         this.title = title;
         this.status = status;
         this.posts = posts;
+        this.topicId = topicId;
     }
 
     /**
@@ -45,12 +52,14 @@ public final class Discussion extends Entity {
      * @param title The title to set.
      * @param status The status to set.
      * @param posts The list of post to set.
+     * @param topicId The id of the topic.
      */
-    public Discussion(int id, String title, Status status, List<Post> posts) {
+    public Discussion(int id, String title, Status status, List<Post> posts, int topicId) {
         this.id = id;
         this.title = title;
         this.status = status;
         this.posts = posts;
+        this.topicId = topicId;
     }
 
     /**
@@ -58,7 +67,7 @@ public final class Discussion extends Entity {
      * @return The title of the discussion.
      */
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     /**
@@ -74,7 +83,7 @@ public final class Discussion extends Entity {
      * @return The discussion's status.
      */
     public Status getStatut() {
-        return status;
+        return this.status;
     }
 
     /**
@@ -90,7 +99,7 @@ public final class Discussion extends Entity {
      * @return The list of posts.
      */
     public List<Post> getPosts() {
-        return posts;
+        return this.posts;
     }
 
     /**
@@ -99,5 +108,21 @@ public final class Discussion extends Entity {
      */
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    /**
+     * Gets the topic attribute value.
+     * @return The value of the topic attribute.
+     */
+    public int getTopicId() {
+        return this.topicId;
+    }
+
+    /**
+     * Sets the topicId attribute.
+     * @param topicId The new value to set.
+     */
+    public void setTopicId(int topicId) {
+        this.topicId = topicId;
     }
 }

@@ -74,10 +74,9 @@ public final class Discussion extends Entity {
      */
     public Discussion(ResultSet rs) {
         try {
-            this.setId(rs.getInt(ID));
-            this.setTitle(rs.getString(LABEL));
-            this.setTopicId(rs.getInt(TOPIC));
-            // TODO: See if getting all the associated posts.
+            this.id = rs.getInt(ID);
+            this.title = rs.getString(LABEL);
+            this.topicId = rs.getInt(TOPIC);
         } catch (SQLException e) {
             System.err.println("An error occurred with the discussion init.\n" + e.getMessage());
         }

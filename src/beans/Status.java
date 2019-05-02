@@ -42,8 +42,8 @@ public final class Status extends Entity {
      */
     public Status(ResultSet rs) {
         try {
-            this.setId(rs.getInt(ID));
-            this.setName(rs.getString(LABEL));
+            this.id = rs.getInt(ID);
+            this.name = rs.getString(LABEL);
         } catch (SQLException e) {
             System.err.println("An error occurred with the status init.\n" + e.getMessage());
         }

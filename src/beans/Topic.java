@@ -1,5 +1,7 @@
 package beans;
 
+import managers.DiscussionDbManager;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
@@ -54,9 +56,9 @@ public final class Topic extends Entity {
      */
     public Topic(ResultSet rs) {
         try {
-            this.setId(rs.getInt(ID));
-            this.setName(rs.getString(LABEL));
-            // TODO : Get the associated discussions ?
+            this.id = rs.getInt(ID);
+            this.name = rs.getString(LABEL);
+            this.discussions = new DiscussionDbManager().dbLoadFromTopic(this.id);
         } catch (SQLException e) {
             System.err.println("An error occurred with the topic init.\n" + e.getMessage());
         }

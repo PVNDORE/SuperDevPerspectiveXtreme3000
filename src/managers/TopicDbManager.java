@@ -1,6 +1,6 @@
 package managers;
 
-import entities.Topic;
+import beans.Topic;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import static schemas.TopicDbSchema.*;
 
 /**
- * Manager class used to manage topic entities.
+ * Manager class used to manage topic beans.
  */
 public final class TopicDbManager extends DbManager {
     /**
@@ -49,12 +49,12 @@ public final class TopicDbManager extends DbManager {
     /**
      * Loads a topic from the database.
      * @param id The id of the topic to load.
-     * @return The loaded topic if success else false.
+     * @return The loaded topic if success.
      */
     public Topic dbLoad(int id) {
         try {
             Topic topic = new Topic();
-            String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
@@ -97,7 +97,7 @@ public final class TopicDbManager extends DbManager {
     }
 
     /**
-     * Deletes a topic entity from the database.s
+     * Deletes a topic entity from the database.
      * @param topic The topic to delete.
      * @return true if success else false.
      */

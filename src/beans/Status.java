@@ -37,7 +37,7 @@ public final class Status extends Entity {
      * @return The value of the name.
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**

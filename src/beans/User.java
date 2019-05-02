@@ -65,7 +65,7 @@ public final class User extends Entity {
      * @return The value of the attribute.
      */
     public String getPseudo() {
-        return pseudo;
+        return this.pseudo;
     }
 
     /**
@@ -81,7 +81,7 @@ public final class User extends Entity {
      * @return The value of the attribute.
      */
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     /**
@@ -97,7 +97,7 @@ public final class User extends Entity {
      * @return The value of the attribute.
      */
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     /**
@@ -113,7 +113,7 @@ public final class User extends Entity {
      * @return The value of the attribute.
      */
     public boolean isAdmin() {
-        return isAdmin;
+        return this.isAdmin;
     }
 
     /**

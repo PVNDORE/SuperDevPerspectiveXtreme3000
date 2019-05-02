@@ -58,7 +58,7 @@ public final class Post extends Entity {
      * @return The content of the post.
      */
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     /**
@@ -74,7 +74,7 @@ public final class Post extends Entity {
      * @return The date of the post.
      */
     public Date getDatePublished() {
-        return datePublished;
+        return this.datePublished;
     }
 
     /**
@@ -90,7 +90,7 @@ public final class Post extends Entity {
      * @return The associated user.s
      */
     public User getAuthor() {
-        return author;
+        return this.author;
     }
 
     /**

@@ -1,6 +1,6 @@
 package managers;
 
-import entities.Status;
+import beans.Status;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,9 +11,24 @@ import static schemas.StatusDbSchema.ID;
 import static schemas.StatusDbSchema.LABEL;
 
 /**
- * Manager class used to manage status entities.
+ * Manager class used to manage status beans.
  */
 public final class StatusDbManager extends DbManager {
+    /**
+     * Stores the default status value for solved discussions.
+     */
+    public static String SOLVED = "resolu";
+
+    /**
+     * Stores the default status value for pending discussions.
+     */
+    public static String PENDING = "en attente de validation";
+
+    /**
+     * Stores the default status value for open discussions.
+     */
+    public static String OPEN = "en cours";
+
     /**
      * StatusDbManager's default constructor.
      */
@@ -51,12 +66,12 @@ public final class StatusDbManager extends DbManager {
     /**
      * Loads a status from the database.
      * @param id The id of the status to load.
-     * @return The loaded status if success else false.
+     * @return The loaded status if success.
      */
     public Status dbLoad(int id) {
         try {
             Status status = new Status();
-            String query = String.format("SELECT * FROM %s WHERE %S = ?", TABLE, ID);
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
@@ -114,6 +129,33 @@ public final class StatusDbManager extends DbManager {
             System.err.println("An error occurred with the status's update.\n" + e.getMessage());
 
             return false;
+        }
+    }
+
+    /**
+     * Gets the id associated to the status label given in parameter.
+     * @param label The label of the status.
+     * @return The id of the status.
+     */
+    public int getId(String label) {
+        try {
+            Status status = new Status();
+            String query = String.format("SELECT %s FROM %s WHERE %s = ?", ID, TABLE, LABEL);
+            PreparedStatement st = this.getConnector().prepareStatement(query);
+
+            st.setString(1, label);
+
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt(ID);
+            }
+
+            return 0;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the status loading.\n" + e.getMessage());
+
+            return 0;
         }
     }
 }

@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Abstract class extended by all the manager classes in order to manage the entities in the db.
+ * Abstract class extended by all the manager classes in order to manage the beans in the db.
  */
 public abstract class DbManager {
     /**

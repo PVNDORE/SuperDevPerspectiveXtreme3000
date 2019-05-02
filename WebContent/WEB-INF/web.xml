@@ -7,4 +7,22 @@
 			<servlet-name>DisplayTopics</servlet-name>
 			<url-pattern>/displayTopics</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DisplayPosts</servlet-name>
+		<servlet-class>servlets.DisplayPosts</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+			<servlet-name>DisplayPosts</servlet-name>
+			<url-pattern>/displayPosts</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>DisplayDiscussions</servlet-name>
+		<servlet-class>servlets.DisplayDiscussions</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+			<servlet-name>DisplayDiscussions</servlet-name>
+			<url-pattern>/displayDiscussions</url-pattern>
+	</servlet-mapping>
 </web-app>

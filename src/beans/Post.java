@@ -12,6 +12,11 @@ import static schemas.PostDbSchema.*;
  * Class defining a post.
  */
 public final class Post extends Entity {
+	/**
+	 * Defines the default attribute name when using request to set attribute.
+	 */
+	public static final String ATTR_NAME = "post";
+	
     /**
      * Stores the content of the post.
      */

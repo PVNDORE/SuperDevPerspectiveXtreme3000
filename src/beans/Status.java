@@ -8,6 +8,11 @@ import static schemas.StatusDbSchema.*;
  * Class defining the status of a discussion.
  */
 public final class Status extends Entity {
+	/**
+	 * Defines the default attribute name when using request to set attribute.
+	 */
+	public static final String ATTR_NAME = "status";
+	
     /**
      * Stores the name of the status.
      */

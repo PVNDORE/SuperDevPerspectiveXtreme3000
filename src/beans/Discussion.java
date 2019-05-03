@@ -13,6 +13,11 @@ import static schemas.DiscussionDbSchema.*;
  * Class representing a discussion.
  */
 public final class Discussion extends Entity {
+	/**
+	 * Defines the default attribute name when using request to set attribute.
+	 */
+	public static final String ATTR_NAME = "discussion";
+	
     /**
      * Stores the discussion title.
      */

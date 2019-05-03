@@ -12,6 +12,11 @@ import static schemas.TopicDbSchema.*;
  * Class representing a topic of the app.
  */
 public final class Topic extends Entity {
+	/**
+	 * Defines the default attribute name when using request to set attribute.
+	 */
+	public static final String ATTR_NAME = "topic";
+	
     /**
      * Stores the name of the topic.
      */

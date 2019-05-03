@@ -28,7 +28,7 @@
                     <legend>Contenu de votre post</legend>
     
                     <label for="content"><span class="requis"></span></label>
-                    <input type="text" id="content" name="content"  />
+                    <textarea id="content" name="content" ></textarea>
                     <br />
                </fieldset>
                 <input type="submit" value="Creer votre post" class="bouton1" />

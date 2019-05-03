@@ -18,7 +18,7 @@ public class CreatePost extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		this.getServletContext().getRequestDispatcher("/WEB-INF/createPosts.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/createPost.jsp").forward(request, response);
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)

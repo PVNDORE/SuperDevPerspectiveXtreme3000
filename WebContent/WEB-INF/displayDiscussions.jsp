@@ -21,10 +21,11 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
+     <h4><a href="displayTopics" ><c:out value="Topics" /></a></h4>
       <h4>${title} <a href="createDiscussion?topic_id=<%= request.getParameter("topic_id") %>" class="bouton1">+</a></h4>
       <c:forEach var="item" items="${discussion}">
       	<dl>
-        	<a href="displayPosts?discussion_id=${item.id}" ><c:out value="${item.title}" /></a>
+        	<a href="displayPosts?discussion_id=${item.id}&topic_id=${topicId}" ><c:out value="${item.title}" /></a>
      	</dl>
 	  </c:forEach>
     </div>

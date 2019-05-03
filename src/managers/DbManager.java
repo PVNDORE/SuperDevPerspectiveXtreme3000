@@ -61,13 +61,4 @@ public abstract class DbManager {
     public static void setConnector(Connection connector) {
     	DbManager.connector = connector;
     }
-
-    @Override
-    public void finalize() {
-        try {
-        	DbManager.connector.close();
-        } catch (SQLException e) {
-            System.err.println("The connector can't be closed, it may not exists.");
-        }
-    }
 }

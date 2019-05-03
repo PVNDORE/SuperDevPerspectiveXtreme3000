@@ -44,6 +44,7 @@ public class DisplayDiscussions extends HttpServlet
 				request.setAttribute("title", topic.getName());
 				request.setAttribute("linkVisibility", visibility);
 				request.setAttribute(Discussion.ATTR_NAME, discussions);
+				request.setAttribute("topicId", topicId);
 
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
 			}

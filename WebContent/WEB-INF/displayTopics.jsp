@@ -15,7 +15,8 @@
 </head>
 <body id="babout">
 <div id="header">
-  <h1>DevPerspective</h1>
+  <div style="display:inline-block;"><a href="displayTopics"><h1>DevPerspective</h1></a></div>
+  <div style="display:inline-block;"><a href="logInSignIn" class="bouton1">Log in / Sign in</a></div>
 </div>
 <div id="wrapper">
   <div id="content-wrapper">
@@ -26,6 +27,7 @@
       <c:forEach var="item" items="${topic}">
       	<dl>
         	<a href="displayDiscussions?topic_id=${item.id}" ><c:out value="${item.name}" /></a>
+        	
      	</dl>
 	  </c:forEach>  
 	</div>

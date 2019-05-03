@@ -15,12 +15,13 @@
 </head>
 <body id="babout">
 <div id="header">
-  <h1>DevPerspective</h1>
+  <div style="display:inline-block;"><a href="displayTopics"><h1>DevPerspective</h1></a></div>
+  <div style="display:inline-block;"><a href="logInSignIn" class="bouton1">Log in / Sign in</a></div>
 </div>
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-	    <h4>${title}</h4>
+	    <h4><a href="displayTopics" ><c:out value="Topics" /></a> : <a href="displayDiscussions?topic_id=${param.topic_id}" ><c:out value="${param.topic_name}"  /></a> : ${title} </h4>
 	      <c:forEach var="post" items="${post}">
 	      	<dl>
 	      		<dt><c:out value="${post.author.pseudo}" />

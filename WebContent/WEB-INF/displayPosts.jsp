@@ -29,7 +29,7 @@
 	     	</dl>
 		</c:forEach>
 		<div>
-            <form method="POST" action="createPost">
+            <form method="post" action="createPost">
                 <fieldset>
                     <legend>Contenu de votre post</legend>
     

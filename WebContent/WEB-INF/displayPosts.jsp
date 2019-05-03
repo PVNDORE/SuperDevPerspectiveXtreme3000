@@ -21,7 +21,7 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-	    <h4><a href="displayDiscussions?topic_id=${param.topic_id}" ><c:out value="${title}" /></a></h4>
+	    <h4><a href="displayTopics" ><c:out value="Topics" /></a> : <a href="displayDiscussions?topic_id=${param.topic_id}" ><c:out value="${param.topic_name}"  /></a> : ${title} </h4>
 	      <c:forEach var="post" items="${post}">
 	      	<dl>
 	      		<dt><c:out value="${post.author.pseudo}" />

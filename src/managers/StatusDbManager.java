@@ -91,6 +91,34 @@ public final class StatusDbManager extends DbManager {
             return null;
         }
     }
+    
+    /**
+     * Loads the pending status from the database.
+     * @return The loaded status.
+     */
+    public Status dbLoadPending() {
+        try {
+            Status status = null;
+            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, LABEL);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
+
+            st.setString(1, PENDING);
+
+            ResultSet rs = st.executeQuery();
+
+            if (rs.next()) {
+                status = new Status(rs);
+            }
+
+            rs.close();
+
+            return status;
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the status loading.\n" + e.getMessage());
+
+            return null;
+        }
+    }
 
     /**
      * Updates a status into the database.

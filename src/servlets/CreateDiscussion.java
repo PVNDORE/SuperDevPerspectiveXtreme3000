@@ -13,10 +13,12 @@ import beans.Discussion;
 import beans.Post;
 import beans.Status;
 import beans.User;
+import managers.DiscussionDbManager;
+import managers.PostDbManager;
+import managers.StatusDbManager;
 import utils.UserUtils;
 
-public class CreateDiscussion extends HttpServlet 
-{
+public class CreateDiscussion extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
@@ -24,19 +26,19 @@ public class CreateDiscussion extends HttpServlet
 	}
 	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-			{
-				Discussion myDiscussion = new Discussion();
-				
-				// set title
-				myDiscussion.setTitle(request.getParameter("title"));
-				
-				// set status
-				Status myStatus = new Status();
-				//myStatus.setName("Cr�ation");
-				myDiscussion.setStatut(myStatus);
-				
-				request.setAttribute("discussion", myDiscussion);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
-			}
+	throws ServletException, IOException
+	{
+		Discussion myDiscussion = new Discussion();
+		DiscussionDbManager manager = new DiscussionDbManager();
+
+		myDiscussion.setTitle(request.getParameter("title"));
+		myDiscussion.setTopicId(Integer.valueOf(request.getParameter("topic_id")));
+		myDiscussion.setStatut(new StatusDbManager().dbLoadPending());
+		
+		manager.dbCreate(myDiscussion);
+		
+		request.setAttribute(Post.ATTR_NAME, new PostDbManager().dbLoadFromDiscussion(myDiscussion.getId()));
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp?discussion_id=" + myDiscussion.getId()).forward(request, response);
+	}
 }

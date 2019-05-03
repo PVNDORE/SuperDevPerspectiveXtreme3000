@@ -18,11 +18,8 @@ public class DisplayDiscussions extends HttpServlet
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{	
-		
-		
 		if (request.getParameter("topic_id") != null) {
 			int topicId = Integer.valueOf(request.getParameter("topic_id"));
-			
 			List<Discussion> discussions = new DiscussionDbManager().dbLoadFromTopic(topicId);
 			Topic topic = new TopicDbManager().dbLoad(topicId);
 			

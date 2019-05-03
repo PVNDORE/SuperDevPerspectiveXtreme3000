@@ -21,9 +21,8 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-    
-      <div>
-            <form method="POST" action="createDiscussion">
+       <div>
+            <form method="post" action="createDiscussion">
                 <fieldset>
                     <legend>Titre de votre discussion</legend>
     
@@ -31,11 +30,10 @@
                     <input type="text" id="title" name="title" size="20" maxlength="20" />
                     <br />
                </fieldset>
-                <input type="submit" value="Creer votre discussion" class="bouton1" />
+               <input type="hidden" name="topic_id" value="<%= request.getParameter("topic_id") %>" />
+               <input type="submit" value="Creer votre discussion" class="bouton1" />
             </form>
         </div>
-        
-       
 	</div>
 	</div>
 	</div>

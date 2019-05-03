@@ -37,7 +37,8 @@
                     <textarea id="content" name="content" style="width:98%;height:100px;"></textarea>
                     <br />
                </fieldset>
-                <input type="submit" value="Creer votre post" class="bouton1" />
+               <input type="hidden" name="discussion_id" value="<%= request.getParameter("discussion_id") %>" />
+               <input type="submit" value="Creer votre post" class="bouton1" />
             </form>
         </div>
 	</div>

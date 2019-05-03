@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Post;
 import beans.User;
+import managers.PostDbManager;
 import utils.UserUtils;
 
 public class CreatePost extends HttpServlet 
@@ -36,10 +37,15 @@ public class CreatePost extends HttpServlet
 			myPost.setAuthor(myUser);
 				
 			// set date
-			Date date = new Date();
-			myPost.setDatePublished(date); 
-				
-			request.setAttribute("post", myPost);
+			myPost.setDatePublished(new Date());
+			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));
+			
+			PostDbManager manager = new PostDbManager();
+			
+			manager.dbCreate(myPost);
+			
+			request.setAttribute(Post.ATTR_NAME, manager.dbLoadFromDiscussion(myPost.getDiscussionId()));
+			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
 		}
 }

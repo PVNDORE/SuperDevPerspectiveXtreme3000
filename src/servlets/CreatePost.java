@@ -31,13 +31,7 @@ public class CreatePost extends HttpServlet
 			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));
 			
 			// set author
-			User myUser = new User();
-			UserUtils myUserUtils = new UserUtils();
-			myUser.setPseudo(myUserUtils.getUser(request));
-				
-			myPost.setAuthor(myUser);
-				
-			
+			myPost.setAuthor(UserUtils.getUser(request));
 			
 			PostDbManager manager = new PostDbManager();
 			

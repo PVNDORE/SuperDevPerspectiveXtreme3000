@@ -45,12 +45,30 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>ConnexionInscription</servlet-name>
-		<servlet-class>servlets.ConnexionInscription</servlet-class>	
+		<servlet-name>LogInSignIn</servlet-name>
+		<servlet-class>servlets.LogInSignIn</servlet-class>	
 	</servlet>
 	<servlet-mapping>
-			<servlet-name>ConnexionInscription</servlet-name>
-			<url-pattern>/connexionInscription</url-pattern>
+			<servlet-name>LogInSignIn</servlet-name>
+			<url-pattern>/logInSignIn</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>SignIn</servlet-name>
+		<servlet-class>servlets.SignIn</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+			<servlet-name>SignIn</servlet-name>
+			<url-pattern>/signIn</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>LogIn</servlet-name>
+		<servlet-class>servlets.LogIn</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+			<servlet-name>LogIn</servlet-name>
+			<url-pattern>/logIn</url-pattern>
 	</servlet-mapping>
 	
 	<jsp-config>

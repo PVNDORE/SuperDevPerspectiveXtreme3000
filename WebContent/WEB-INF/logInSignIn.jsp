@@ -16,16 +16,17 @@
 </head>
 <body id="babout">
 <div id="header">
-  <h1>DevPerspective</h1>
+  <div style="display:inline-block;"><a href="displayTopics"><h1>DevPerspective</h1></a></div>
+  <div style="display:inline-block;"><a href="logInSignIn" class="bouton1">Log in / Sign in</a></div>
 </div>
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
     
       <div style="display: inline-block;">
-            <form method="POST" action="connexion">
+            <form method="POST" action="logIn">
                 <fieldset>
-                    <legend>Connexion</legend>
+                    <legend>Log in</legend>
     
                     <label for="email">Email<span class="requis"></span></label>
                     <input type="text" id="email" name="email"/>
@@ -34,14 +35,14 @@
                     <input type="password" id="password" name="password"/>
                     <br />
                </fieldset>
-                <input type="submit" value="Se connecter" class="bouton1" />
+                <input type="submit" value="Log in" class="bouton1" />
             </form>
         </div>
         
         <div style="display: inline-block;">
-            <form method="POST" action="connexion">
+            <form method="POST" action="signIn">
                 <fieldset>
-                    <legend>Inscription</legend>
+                    <legend>Sign in</legend>
                     
                     <label for="pseudo">Pseudo<span class="requis"></span></label>
                     <input type="text" id="pseudo" name="pseudo"/>
@@ -53,7 +54,7 @@
                     <input type="password" id="password" name="password"/>
                     <br />
                </fieldset>
-                <input type="submit" value="S'inscrire" class="bouton1" />
+                <input type="submit" value="Sign in" class="bouton1" />
             </form>
         </div>
         

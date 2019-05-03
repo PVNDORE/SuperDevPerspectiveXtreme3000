@@ -13,6 +13,11 @@ public final class User extends Entity {
 	 * Defines the default attribute name when using request to set attribute.
 	 */
 	public static final String ATTR_NAME = "user";
+	
+	/**
+	 * Defines the default cookie name to get the connected user.
+	 */
+	public static final String COOKIE = "userConnected";
     /**
      * Stores the user's pseudo.
      */

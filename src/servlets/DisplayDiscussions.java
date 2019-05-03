@@ -26,6 +26,7 @@ public class DisplayDiscussions extends HttpServlet
 			if (topic != null) {
 				request.setAttribute("title", topic.getName());
 				request.setAttribute(Discussion.ATTR_NAME, discussions);
+				request.setAttribute("topicId", topicId);
 
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
 			}

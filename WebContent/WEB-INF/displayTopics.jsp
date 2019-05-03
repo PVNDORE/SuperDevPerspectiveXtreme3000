@@ -27,6 +27,7 @@
       <c:forEach var="item" items="${topic}">
       	<dl>
         	<a href="displayDiscussions?topic_id=${item.id}" ><c:out value="${item.name}" /></a>
+        	
      	</dl>
 	  </c:forEach>  
 	</div>

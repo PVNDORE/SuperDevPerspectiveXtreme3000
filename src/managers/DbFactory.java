@@ -33,9 +33,9 @@ public final class DbFactory {
      */
     public DbFactory() {
         this.userName = "root";
-        this.password = "root";
-        this.database = "Forum";
-        this.url = "jdbc:mysql://localhost:8889/" + this.database;
+        this.password = "";
+        this.database = "forum";
+        this.url = "jdbc:mysql://localhost:3306/" + this.database;
     }
 
     /**

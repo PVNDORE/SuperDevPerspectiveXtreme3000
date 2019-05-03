@@ -35,6 +35,7 @@ public class DisplayPosts extends HttpServlet
 				request.setAttribute(Post.ATTR_NAME, posts);
 				request.setAttribute("title", discussion.getTitle());
 				
+				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
 			}
 		}

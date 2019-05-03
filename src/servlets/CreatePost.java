@@ -21,26 +21,25 @@ public class CreatePost extends HttpServlet
 		this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
 	}
 	
-	public void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException
-			{
-				Post myPost = new Post();
+	public void doPost(HttpServletRequest request, HttpServletResponse response) 
+		throws ServletException, IOException {
+			Post myPost = new Post();
 				
-				// set content
-				myPost.setContent(request.getParameter("content"));
+			// set content
+			myPost.setContent(request.getParameter("content"));
 				
-				// set author
-				User myUser = new User();
-				UserUtils myUserUtils = new UserUtils();
-				myUser.setPseudo(myUserUtils.getUser(request));
+			// set author
+			User myUser = new User();
+			UserUtils myUserUtils = new UserUtils();
+			myUser.setPseudo(myUserUtils.getUser(request));
 				
-				myPost.setAuthor(myUser);
+			myPost.setAuthor(myUser);
 				
-				// set date
-				Date date = new Date();
-				myPost.setDatePublished(date); 
+			// set date
+			Date date = new Date();
+			myPost.setDatePublished(date); 
 				
-				request.setAttribute("post", myPost);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
-			}
+			request.setAttribute("post", myPost);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+		}
 }

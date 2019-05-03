@@ -84,7 +84,7 @@ public final class PostDbManager extends DbManager {
     public List<Post> dbLoadFromDiscussion(int id) {
         try {
             List<Post> posts = new ArrayList<>();
-            String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, DISCUSSION);
+            String query = String.format("SELECT * FROM %s WHERE %s = ? ORDER BY %s", TABLE, DISCUSSION, DATE);
             PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);

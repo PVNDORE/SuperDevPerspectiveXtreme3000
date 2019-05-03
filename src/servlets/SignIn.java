@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.Cookie;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Discussion;
 import beans.Post;
 import beans.Status;
+import beans.Topic;
 import beans.User;
+import managers.TopicDbManager;
 import managers.UserDbManager;
 import utils.UserUtils;
 
@@ -34,6 +37,9 @@ public class SignIn extends HttpServlet
 				
 				new UserDbManager().dbCreate(myUser);
 				
+				List<Topic> topics = new TopicDbManager().queryAll();
+				
+				request.setAttribute(Topic.ATTR_NAME, topics);
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
 			}
 }

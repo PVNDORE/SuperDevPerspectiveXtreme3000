@@ -1,6 +1,12 @@
 package beans;
 
+import managers.UserDbManager;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.*;
+
+import static schemas.PostDbSchema.*;
 
 /**
  * Class defining a post.
@@ -53,11 +59,27 @@ public final class Post extends Entity {
      * @param author The author of the post.
      */
     public Post(int id, String content, int discussionId, User author) {
-    	this.discussionId = id;
+    	this.id = id;
         this.content = content;
         this.datePublished = new Date();
         this.author = author;
         this.discussionId = discussionId;
+    }
+
+    /**
+     * Post's constructor from result set.
+     * @param rs The result set from the database.
+     */
+    public Post(ResultSet rs) {
+        try {
+            this.id = rs.getInt(ID);
+            this.content = rs.getString(CONTENT);
+            this.datePublished = rs.getDate(DATE);
+            this.author = new UserDbManager().dbLoad(rs.getInt(USER));
+            this.discussionId = rs.getInt(DISCUSSION);
+        } catch (SQLException e) {
+            System.err.println("An error occurred with the status init.\n" + e.getMessage());
+        }
     }
 
     /**
@@ -115,11 +137,10 @@ public final class Post extends Entity {
 	public int getDiscussionId() {
 		return discussionId;
 	}
-
 	
     /**
      * Sets the value of the discussion id attribute.
-     * @param id of discussion.
+     * @param discussionId the id of the discussion.
      */
 	public void setDiscussionId(int discussionId) {
 		this.discussionId = discussionId;

@@ -20,17 +20,23 @@ public class CreateDiscussion extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		Discussion myDiscussion = new Discussion();
-		
-		// set title
-		myDiscussion.setTitle(request.getParameter("title"));
-		
-		// set status
-		Status myStatus = new Status();
-		myStatus.setName("Création");
-		myDiscussion.setStatut(myStatus);
-		
-		request.setAttribute("discussion", myDiscussion);
-		this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+		this.getServletContext().getRequestDispatcher("/WEB-INF/createDiscussion.jsp").forward(request, response);
 	}
+	
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException
+			{
+				Discussion myDiscussion = new Discussion();
+				
+				// set title
+				myDiscussion.setTitle(request.getParameter("title"));
+				
+				// set status
+				Status myStatus = new Status();
+				//myStatus.setName("Crï¿½ation");
+				myDiscussion.setStatut(myStatus);
+				
+				request.setAttribute("discussion", myDiscussion);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+			}
 }

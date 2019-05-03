@@ -2,15 +2,13 @@ package managers;
 
 import static schemas.UserDbSchema.*;
 
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import beans.User;
 
-public class UserDbManager extends DbManager {
+public final class UserDbManager extends DbManager {
 
     public UserDbManager() {
         super();
@@ -23,7 +21,8 @@ public class UserDbManager extends DbManager {
      */
     public boolean dbCreate(User user) {
         try {
-            String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE,LABEL,ADMIN,EMAIL,PASSWORD);
+            String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE, LABEL, ADMIN,
+                    EMAIL, PASSWORD);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());
@@ -113,7 +112,8 @@ public class UserDbManager extends DbManager {
      */
     public boolean dbUpdate(User user) {
         try {
-            String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE,LABEL,ADMIN,EMAIL,PASSWORD,ID);
+            String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE, LABEL,
+                    ADMIN, EMAIL, PASSWORD, ID);
             PreparedStatement st = this.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());

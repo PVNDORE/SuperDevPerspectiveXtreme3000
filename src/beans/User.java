@@ -142,6 +142,6 @@ public final class User extends Entity {
      * @param admin The boolean value to set.
      */
     public void setAdmin(boolean admin) {
-        admin = admin;
+        this.admin = admin;
     }
 }

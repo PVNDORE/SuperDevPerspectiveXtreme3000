@@ -16,9 +16,9 @@ public class DisplayPosts extends HttpServlet
 	{
 		List<String> myList= new ArrayList<String>();
 		
-		myList.add("cc sa va ?");
-		myList.add("wé é toi ");
-		myList.add("tu veu voir ma bite ??");
+		//myList.add("cc sa va ?");
+		//myList.add("wï¿½ ï¿½ toi ");
+		//myList.add("tu veu voir ma bite ??");
 		
 		request.setAttribute("listPost", myList);
 		request.setAttribute("title", request.getParameter("title"));

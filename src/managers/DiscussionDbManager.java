@@ -178,6 +178,7 @@ public final class DiscussionDbManager extends DbManager {
             st.setString(1, discussion.getTitle());
             st.setInt(2, discussion.getTopicId());
             st.setInt(3, discussion.getStatut().getId());
+            st.setInt(4, discussion.getId());
 
             return st.executeUpdate() != 0;
         } catch (SQLException e) {

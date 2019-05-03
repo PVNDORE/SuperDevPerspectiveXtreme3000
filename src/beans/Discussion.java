@@ -1,12 +1,13 @@
 package beans;
 
+import managers.PostDbManager;
+import managers.StatusDbManager;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 
-import static schemas.DiscussionDbSchema.ID;
-import static schemas.DiscussionDbSchema.LABEL;
-import static schemas.DiscussionDbSchema.TOPIC;
+import static schemas.DiscussionDbSchema.*;
 
 /**
  * Class representing a discussion.
@@ -76,6 +77,8 @@ public final class Discussion extends Entity {
         try {
             this.id = rs.getInt(ID);
             this.title = rs.getString(LABEL);
+            this.status = new StatusDbManager().dbLoad(rs.getInt(STATUS));
+            this.posts = new PostDbManager().dbLoadFromDiscussion(rs.getInt(STATUS));
             this.topicId = rs.getInt(TOPIC);
         } catch (SQLException e) {
             System.err.println("An error occurred with the discussion init.\n" + e.getMessage());

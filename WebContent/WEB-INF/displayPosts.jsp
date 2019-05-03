@@ -21,10 +21,10 @@
   <div id="content-wrapper">
     <div id="content">
 	    <h4>${title}</h4>
-	      <c:forEach var="post" items="${listPost}">
+	      <c:forEach var="post" items="${post}">
 	      	<dl>
 	      		<dt><c:out value="${post.author.pseudo}" />
-	      			<br> <c:out value="${post.date}" /></dt>
+	      			<br> <c:out value="${post.datePublished}" /></dt>
 	        	<dd><c:out value="${post.content}" /></dd>
 	     	</dl>
 		</c:forEach>

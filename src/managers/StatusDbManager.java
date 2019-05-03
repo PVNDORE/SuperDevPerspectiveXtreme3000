@@ -44,7 +44,7 @@ public final class StatusDbManager extends DbManager {
     public boolean dbCreate(Status status) {
         try {
             String query = String.format("INSERT INTO %s (%s) VALUES (?)", TABLE, LABEL);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, status.getName());
             st.executeUpdate();
@@ -72,7 +72,7 @@ public final class StatusDbManager extends DbManager {
         try {
             Status status = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -100,7 +100,7 @@ public final class StatusDbManager extends DbManager {
     public boolean dbUpdate(Status status) {
         try {
             String query = String.format("UPDATE %s SET %s = ? WHERE %s = ?", TABLE, LABEL, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, status.getName());
             st.setInt(2, status.getId());
@@ -121,7 +121,7 @@ public final class StatusDbManager extends DbManager {
     public boolean dbDelete(Status status) {
         try {
             String query = String.format("DELETE FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, status.getId());
 
@@ -142,7 +142,7 @@ public final class StatusDbManager extends DbManager {
         try {
             Status status = new Status();
             String query = String.format("SELECT %s FROM %s WHERE %s = ?", ID, TABLE, LABEL);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, label);
 

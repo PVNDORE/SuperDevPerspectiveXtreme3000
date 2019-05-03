@@ -22,25 +22,11 @@
     <div id="content">
     
       <h4>Topics</h4>
-      <dl>
-        <a href="displayDiscussions?title=Developpement WEB">Developpement WEB</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=developpement oriente object">developpement oriente object</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=gestion de projet">gestion de projet</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=management d'equipe">management d'equipe</a><br>
-        
-      </dl>
-      
-        
-       
+      <c:forEach var="item" items="${topic}">
+      	<dl>
+        	<a href="displayDiscussions?topic_id=${item.id}" ><c:out value="${item.name}" /></a>
+     	</dl>
+	  </c:forEach>  
 	</div>
 <div id="footer">
   <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>

@@ -10,17 +10,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Discussion;
+import beans.Topic;
 import managers.DiscussionDbManager;
+import managers.TopicDbManager;
 
 public class DisplayDiscussions extends HttpServlet 
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{	
-		List<Discussion> discussions = new DiscussionDbManager().dbLoadFromTopic(0);
 		
-		request.setAttribute(Discussion.ATTR_NAME, discussions);
-		request.setAttribute("title", request.getParameter("title"));
-		this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
+		
+		if (request.getParameter("topic_id") != null) {
+			int topicId = Integer.valueOf(request.getParameter("topic_id"));
+			
+			List<Discussion> discussions = new DiscussionDbManager().dbLoadFromTopic(topicId);
+			Topic topic = new TopicDbManager().dbLoad(topicId);
+			
+			if (topic != null) {
+				request.setAttribute("title", topic.getName());
+				request.setAttribute(Discussion.ATTR_NAME, discussions);
+
+				this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
+			}
+			
+		} else {
+			
+		}
 	}
 }
 

@@ -23,7 +23,7 @@ public final class UserDbManager extends DbManager {
         try {
             String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE, LABEL, ADMIN,
                     EMAIL, PASSWORD);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());
             st.setBoolean(2,user.isAdmin());
@@ -54,7 +54,7 @@ public final class UserDbManager extends DbManager {
         try {
             User user = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -84,7 +84,7 @@ public final class UserDbManager extends DbManager {
         try {
             User user = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ? && %s = ?", TABLE, EMAIL, PASSWORD);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, email);
             st.setString(2, password);
@@ -114,7 +114,7 @@ public final class UserDbManager extends DbManager {
         try {
             String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE, LABEL,
                     ADMIN, EMAIL, PASSWORD, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, user.getPseudo());
             st.setBoolean(2, user.isAdmin());
@@ -138,7 +138,7 @@ public final class UserDbManager extends DbManager {
     public boolean dbDelete(User user) {
         try {
             String query = String.format("DELETE FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, user.getId());
 

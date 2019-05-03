@@ -22,11 +22,11 @@
   <div id="content-wrapper">
     <div id="content">
       <h4>${title} <a href="createDiscussion" class="bouton1">+</a></h4>
-      <c:forEach var="item" items="${listDiscussion}">
+      <c:forEach var="item" items="${discussion}">
       	<dl>
-        	<a href="displayPosts?title=${title}/${item}" ><c:out value="${item}" /></a>
+        	<a href="displayPosts?discussion_id=${item.id}" ><c:out value="${item.title}" /></a>
      	</dl>
-	</c:forEach>
+	  </c:forEach>
     </div>
   </div>
   </div>

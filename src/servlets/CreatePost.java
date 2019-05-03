@@ -32,8 +32,7 @@ public class CreatePost extends HttpServlet
 			
 			// set author
 			User myUser = new User();
-			UserUtils myUserUtils = new UserUtils();
-			myUser.setPseudo(myUserUtils.getUser(request));
+			myUser.setPseudo("dqdq");
 				
 			myPost.setAuthor(myUser);
 				

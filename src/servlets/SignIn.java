@@ -13,9 +13,10 @@ import beans.Discussion;
 import beans.Post;
 import beans.Status;
 import beans.User;
+import managers.UserDbManager;
 import utils.UserUtils;
 
-public class ConnexionInscription extends HttpServlet 
+public class SignIn extends HttpServlet 
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
@@ -26,9 +27,13 @@ public class ConnexionInscription extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException
 			{
-				Discussion myDiscussion = new Discussion();
-								
-				request.setAttribute("discussion", myDiscussion);
-				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+				User myUser = new User(request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("password"), false);
+				
+				Cookie myCookie = new Cookie(User.COOKIE, String.valueOf(myUser.getId()));
+				response.addCookie(myCookie);
+				
+				new UserDbManager().dbCreate(myUser);
+				
+				this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
 			}
 }

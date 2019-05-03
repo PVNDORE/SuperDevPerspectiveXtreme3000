@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="inc/css/error" media="screen" href="inc/css/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="inc/css/screen.css" />
 <div id='error-page'>
   <div id='error-inner'>
     <div class='box-404'>404</div>

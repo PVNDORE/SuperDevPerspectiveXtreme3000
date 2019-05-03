@@ -29,7 +29,7 @@ public final class DiscussionDbManager extends DbManager {
     public boolean dbCreate(Discussion discussion) {
         try {
             String query = String.format("INSERT INTO %s (%s, %s, %s) VALUES (?, ?, ?)", TABLE, LABEL, TOPIC, STATUS);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, discussion.getTitle());
             st.setInt(2, discussion.getTopicId());
@@ -59,7 +59,7 @@ public final class DiscussionDbManager extends DbManager {
         try {
             Discussion discussion = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -87,7 +87,7 @@ public final class DiscussionDbManager extends DbManager {
         try {
             ArrayList<Discussion> discussions = new ArrayList<>();
             String query = String.format("SELECT * FROM %s WHERE %s != ?", TABLE, STATUS);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, new StatusDbManager().getId(StatusDbManager.PENDING));
 
@@ -115,7 +115,7 @@ public final class DiscussionDbManager extends DbManager {
         try {
             ArrayList<Discussion> discussions = new ArrayList<>();
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, STATUS);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, new StatusDbManager().getId(StatusDbManager.PENDING));
 
@@ -144,7 +144,7 @@ public final class DiscussionDbManager extends DbManager {
             Discussion discussion;
             ArrayList<Discussion> discussions = new ArrayList<>();
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, TOPIC);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -173,7 +173,7 @@ public final class DiscussionDbManager extends DbManager {
         try {
             String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ? WHERE %s = ?", TABLE, LABEL, TOPIC,
                     STATUS, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, discussion.getTitle());
             st.setInt(2, discussion.getTopicId());
@@ -196,7 +196,7 @@ public final class DiscussionDbManager extends DbManager {
     public boolean dbDelete(Discussion discussion) {
         try {
             String query = String.format("DELETE FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, discussion.getId());
 

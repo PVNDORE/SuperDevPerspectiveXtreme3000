@@ -22,26 +22,15 @@
     <div id="content">
     
       <h4>Topics</h4>
-      <dl>
-        <a href="displayDiscussions?title=Developpement WEB">Developpement WEB</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=developpement oriente object">Developpement oriente object</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=gestion de projet">Gestion de projet</a>
-        
-      </dl>
-      <dl>
-        <a href="displayDiscussions?title=management d'equipe">Management d'equipe</a><br>
-        
-      </dl>
-      
-        
        
+      <c:forEach var="item" items="${topic}">
+      	<dl>
+        	<a href="displayDiscussions?topic_id=${item.id}" ><c:out value="${item.name}" /></a>
+     	</dl>
+	  </c:forEach>  
 	</div>
+  </div>
+</div>
 <div id="footer">
   <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
   <p> Design by <a href="https://fr.linkedin.com/in/marc-bariller" title="SimplyGold">Marc Bariller</a></p>

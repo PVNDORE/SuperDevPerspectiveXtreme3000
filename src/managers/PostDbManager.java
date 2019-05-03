@@ -27,7 +27,7 @@ public final class PostDbManager extends DbManager {
         try {
             String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE, DATE, CONTENT,
                     DISCUSSION, USER);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
             DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             st.setString(1, formatter.format(post.getDatePublished()));
             st.setString(2, post.getContent());
@@ -58,7 +58,7 @@ public final class PostDbManager extends DbManager {
         try {
             Post post = null;
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -85,7 +85,7 @@ public final class PostDbManager extends DbManager {
         try {
             List<Post> posts = new ArrayList<>();
             String query = String.format("SELECT * FROM %s WHERE %s = ?", TABLE, DISCUSSION);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, id);
 
@@ -112,7 +112,7 @@ public final class PostDbManager extends DbManager {
         try {
             String query = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, %s = ? WHERE %s = ?",TABLE, DATE,
                     CONTENT, DISCUSSION, USER, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setString(1, post.getDatePublished().toString());
             st.setString(2, post.getContent());
@@ -136,7 +136,7 @@ public final class PostDbManager extends DbManager {
     public boolean dbDelete(Post post) {
         try {
             String query = String.format("DELETE FROM %s WHERE %s = ?", TABLE, ID);
-            PreparedStatement st = this.getConnector().prepareStatement(query);
+            PreparedStatement st = DbManager.getConnector().prepareStatement(query);
 
             st.setInt(1, post.getId());
 

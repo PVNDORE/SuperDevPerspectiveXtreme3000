@@ -10,7 +10,7 @@ public abstract class DbManager {
     /**
      * Stores the database connector.
      */
-    private Connection connector;
+    private static Connection connector;
 
     /**
      * Defines if the jdbc driver has been loaded or not.
@@ -30,8 +30,12 @@ public abstract class DbManager {
                 System.err.println(e.getMessage());
             }
         }
+        
         DbFactory dbF = new DbFactory();
-        this.connector = dbF.getConnector();
+        
+        if (DbManager.connector == null) {
+        	DbManager.connector = dbF.getConnector();
+        }
     }
 
     /**
@@ -39,29 +43,29 @@ public abstract class DbManager {
      * @param dbF The DbFactory used to get the connection object.
      */
     public DbManager(DbFactory dbF) {
-        this.connector = dbF.getConnector();
+    	DbManager.connector = dbF.getConnector();
     }
 
     /**
      * Gets the connector attribute.
      * @return The db connection.
      */
-    public Connection getConnector() {
-        return this.connector;
+    public static Connection getConnector() {
+        return DbManager.connector;
     }
 
     /**
      * Sets the value of the connector.
      * @param connector The new value to set.
      */
-    public void setConnector(Connection connector) {
-        this.connector = connector;
+    public static void setConnector(Connection connector) {
+    	DbManager.connector = connector;
     }
 
     @Override
     public void finalize() {
         try {
-            this.connector.close();
+        	DbManager.connector.close();
         } catch (SQLException e) {
             System.err.println("The connector can't be closed, it may not exists.");
         }

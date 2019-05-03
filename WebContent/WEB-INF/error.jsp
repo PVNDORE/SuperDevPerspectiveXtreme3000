@@ -6,14 +6,8 @@
     <p>You are half way around the word, but OOPS you make the wrong turn,
 let us lead you to the right way,</p>
     <p> return to our
-      <a href='http://www.seocips.com' title='HOME'>homepage</a> ?
+      <a href='displayTopics' title='HOME'>homepage</a> ?
     </p>
-    <div id='search-box'>
-      <form action='/search' id='cse-search-box' method='get'>
-        <input id='search-text' name='q' onblur='if(this.value==&apos;&apos;)this.value=this.defaultValue;' onfocus='if(this.value==this.defaultValue)this.value=&apos;&apos;' type='text' value='' />
-        <button id='search-button' type='submit' />
-      </form>
-    </div>
   </div>
 </div>
 <canvas id="c"></canvas>

@@ -28,11 +28,10 @@ public class SignIn extends HttpServlet
 			throws ServletException, IOException
 			{
 				User myUser = new User(request.getParameter("pseudo"), request.getParameter("email"), request.getParameter("password"), false);
+				new UserDbManager().dbCreate(myUser);
 				
 				Cookie myCookie = new Cookie(User.COOKIE, String.valueOf(myUser.getId()));
 				response.addCookie(myCookie);
-				
-				new UserDbManager().dbCreate(myUser);
 				
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
 			}

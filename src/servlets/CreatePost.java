@@ -28,20 +28,12 @@ public class CreatePost extends HttpServlet
 				
 			myPost.setContent(request.getParameter("content"));
 			myPost.setDatePublished(new Date());
-			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));
-			
-			// set author
-			User myUser = new User();
-			myUser.setPseudo("dqdq");
-				
-			myPost.setAuthor(myUser);
-				
-			
+			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));	
+			myPost.setAuthor(UserUtils.getUser(request));
 			
 			PostDbManager manager = new PostDbManager();
 			
 			manager.dbCreate(myPost);
-			
 			request.setAttribute(Post.ATTR_NAME, manager.dbLoadFromDiscussion(myPost.getDiscussionId()));
 			
 			this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);

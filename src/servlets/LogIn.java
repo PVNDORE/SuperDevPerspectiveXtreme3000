@@ -31,9 +31,11 @@ public class LogIn extends HttpServlet
 		
 				myUser = new UserDbManager().dbLoadFromAuth(request.getParameter("email"), request.getParameter("password"));
 				
-				Cookie myCookie = new Cookie(User.COOKIE, String.valueOf(myUser.getId()));
-				response.addCookie(myCookie);
-				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
+				if (myUser != null) {
+					Cookie myCookie = new Cookie(User.COOKIE, String.valueOf(myUser.getId()));
+					response.addCookie(myCookie);
+					
+					this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
+				}
 			}
 }

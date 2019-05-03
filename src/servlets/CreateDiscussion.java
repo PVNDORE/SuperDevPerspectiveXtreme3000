@@ -33,7 +33,7 @@ public class CreateDiscussion extends HttpServlet {
 
 		myDiscussion.setTitle(request.getParameter("title"));
 		myDiscussion.setTopicId(Integer.valueOf(request.getParameter("topic_id")));
-		myDiscussion.setStatut(new StatusDbManager().dbLoadPending());
+		myDiscussion.setStatus(new StatusDbManager().dbLoadPending());
 		
 		manager.dbCreate(myDiscussion);
 		

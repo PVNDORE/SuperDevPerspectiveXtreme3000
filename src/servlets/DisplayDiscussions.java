@@ -11,23 +11,48 @@ import javax.servlet.http.HttpServletResponse;
 
 import beans.Discussion;
 import beans.Topic;
+import beans.User;
 import managers.DiscussionDbManager;
+import managers.StatusDbManager;
 import managers.TopicDbManager;
+import utils.UserUtils;
 
 public class DisplayDiscussions extends HttpServlet 
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{	
 		if (request.getParameter("topic_id") != null) {
+			String visibility;
+			List<Discussion> discussions;
+			DiscussionDbManager manager = new DiscussionDbManager();
 			int topicId = Integer.valueOf(request.getParameter("topic_id"));
-			List<Discussion> discussions = new DiscussionDbManager().dbLoadFromTopic(topicId);
+			User user = UserUtils.getUser(request);
+			
+			System.err.print(user);
+			
+			if (user.isAdmin()) {
+				discussions = manager.dbLoadFromTopic(topicId);
+				visibility = "visible";
+			} else {
+				discussions = manager.dbLoadPublic();
+				visibility = "hidden";
+			}
+	
 			Topic topic = new TopicDbManager().dbLoad(topicId);
 			
 			if (topic != null) {
 				request.setAttribute("title", topic.getName());
+				request.setAttribute("linkVisibility", visibility);
 				request.setAttribute(Discussion.ATTR_NAME, discussions);
 
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
+			}
+			
+			if (request.getParameter("validate") != null) {
+				Discussion discussion = manager.dbLoad(Integer.valueOf((String) request.getParameter("discussion_id")));
+				
+				discussion.setStatus(new StatusDbManager().dbLoadOpen());
+				manager.dbUpdate(discussion);
 			}
 		} 
 		

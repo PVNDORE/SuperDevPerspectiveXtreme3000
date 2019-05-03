@@ -24,7 +24,7 @@
       <h4>${title} <a href="createDiscussion?topic_id=<%= request.getParameter("topic_id") %>" class="bouton1">+</a></h4>
       <c:forEach var="item" items="${discussion}">
       	<dl>
-        	<a href="displayPosts?discussion_id=${item.id}" ><c:out value="${item.title}" /></a>
+        	<a href="displayPosts?discussion_id=${item.id}" ><c:out value="${item.title}" /></a> <c:if test="${item.getStatus().getName().equals(\"en attente de validation\")}"><a href="?validate=true&discussion_id=${item.id}&topic_id=<%= request.getParameter("topic_id") %>" style="visibility:${linkVisibility}; color:red">validate discussion</a></c:if>
      	</dl>
 	  </c:forEach>
     </div>

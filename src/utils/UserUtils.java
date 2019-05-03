@@ -14,7 +14,7 @@ public class UserUtils
 
 		for (int i = 0; i < cookies.length; i++) 
 		{
-			if (cookies[i].getName() == User.COOKIE) 
+			if (cookies[i].getName().equals(User.COOKIE)) 
 			{
 				return new UserDbManager().dbLoad(Integer.valueOf(cookies[i].getValue()));
 			}

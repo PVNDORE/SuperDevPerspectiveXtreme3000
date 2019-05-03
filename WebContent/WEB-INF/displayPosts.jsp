@@ -29,7 +29,7 @@
 	     	</dl>
 		</c:forEach>
 		<div>
-            <form method="post" action="createPost">
+            <form method="post" action="createPost" style="visibility:${formVisibility}">
                 <fieldset>
                     <legend>Contenu de votre post</legend>
     

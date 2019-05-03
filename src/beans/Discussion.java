@@ -110,7 +110,7 @@ public final class Discussion extends Entity {
      * Gets the value of the status attribute.
      * @return The discussion's status.
      */
-    public Status getStatut() {
+    public Status getStatus() {
         return this.status;
     }
 
@@ -118,7 +118,7 @@ public final class Discussion extends Entity {
      * Sets the value of the status attribute.
      * @param status The status to set.
      */
-    public void setStatut(Status status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import beans.Discussion;
 import beans.Post;
 import managers.PostDbManager;
+import managers.StatusDbManager;
+import utils.UserUtils;
 import managers.DiscussionDbManager;;
 
 public class DisplayPosts extends HttpServlet 
@@ -28,10 +30,18 @@ public class DisplayPosts extends HttpServlet
 		}
 		
 		if (discussionId != null) {
+			String visibility;
 			List<Post> posts= new PostDbManager().dbLoadFromDiscussion(discussionId);
 			Discussion discussion = new DiscussionDbManager().dbLoad(discussionId);
 			
 			if (discussion != null) {
+				if (discussion.getStatus().getName().equals(StatusDbManager.OPEN) && UserUtils.getUser(request) != null) {
+					visibility = "visible";
+				} else {
+					visibility = "hidden";
+				}
+				
+				request.setAttribute("formVisibility", visibility);
 				request.setAttribute(Post.ATTR_NAME, posts);
 				request.setAttribute("title", discussion.getTitle());
 				

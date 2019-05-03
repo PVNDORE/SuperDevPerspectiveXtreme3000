@@ -38,7 +38,7 @@ ul, ol, dl, blockquote, pre
 	line-height: 1.6em;
 	border: 1px solid #1a1a1a;
 	border-top: 10px solid #151515;
-	background: #404040 url(images/navigation_hover.gif) top left repeat;
+	background: #404040 url(inc/images/navigation_hover.gif) top left repeat;
 }
 
 p { margin: 0; }
@@ -69,7 +69,7 @@ em { font-style: italic; }
 
 strong { font-weight: bold; }
 
-ins { color: #999999; text-decoration: none; padding-left: 20px; background: transparent url(images/information.png) center left no-repeat; }
+ins { color: #999999; text-decoration: none; padding-left: 20px; background: transparent url(inc/images/information.png) center left no-repeat; }
 
 del { text-decoration: line-through; } 
 
@@ -94,7 +94,7 @@ body
 	width: 100%; 
 	clear: both;
 	border-top: 10px solid #111111;
-	background: #222222 url(images/navigation_hover.gif) top left repeat;
+	background: #222222 url(inc/images/navigation_hover.gif) top left repeat;
 }
 
 #navigation
@@ -104,7 +104,7 @@ body
 	clear: both;
 	color: #333333;
 	border-bottom: 5px solid #222222;
-	background: #eeeeee url(images/navigation_bg.gif) top left repeat; 
+	background: #eeeeee url(inc/images/navigation_bg.gif) top left repeat; 
 }
 
 #wrapper
@@ -113,7 +113,7 @@ body
 	float: left;
 	width: 100%;
 	margin: 10px 0; 
-	background: transparent url(images/hr_dotted.gif) 60% 0 repeat-y; 
+	background: transparent url(inc/images/hr_dotted.gif) 60% 0 repeat-y; 
 }
 
 #content-wrapper
@@ -179,7 +179,7 @@ body
 #navigation a:active
 {
 	color: #7799bb;
-	background: #333333 url(images/navigation_hover.gif) top left repeat;
+	background: #333333 url(inc/images/navigation_hover.gif) top left repeat;
 }
 
 li#lhome a:hover,
@@ -221,7 +221,7 @@ li#lcontact a:active
 body#babout li#labout a
 {
 	color: #99bbdd;
-	background: #333333 url(images/navigation_hover.gif) 0 -2px repeat;
+	background: #333333 url(inc/images/navigation_hover.gif) 0 -2px repeat;
 }
 
 /* Sidebar */
@@ -234,7 +234,24 @@ body#babout li#labout a
 	line-height: 1.6em;
 	border: 1px solid #1a1a1a;
 	border-top: 10px solid #151515;
-	background: #404040 url(images/navigation_hover.gif) top left repeat;
+	background: #404040 url(inc/images/navigation_hover.gif) top left repeat;
+}
+
+a.bouton1 {
+	padding: 5px 10px; 
+	background: #779955; 
+	color: white; 
+}
+a.bouton1:hover {
+	background: red; 
+}
+input.bouton1{
+	padding: 5px 10px; 
+	background: #779955; 
+	color: white; 
+}
+input.bouton1:hover {
+	background: red; 
 }
 
 /* Footer */

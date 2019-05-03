@@ -11,7 +11,7 @@
 <meta name="description" content="Description Goes Here" />
 <meta name="keywords" content="And, Finally, Keywords Go Here." />
 <link rel="start" title="Home" href="http://www.sixpence.com/" />
-<link rel="stylesheet" type="text/css" media="screen" href="inc/screen.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="inc/css/screen.css" />
 <!--[if lt ie 7]><link rel="stylesheet" type="text/css" media="screen" href="ie-win.css" /><![endif]-->
 </head>
 <body id="babout">
@@ -21,7 +21,7 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-      <h4>${title}</h4>
+      <h4>${title} <a href="createDiscussion" class="bouton1">+</a></h4>
       <c:forEach var="item" items="${listDiscussion}">
       	<dl>
         	<a href="displayPosts?title=${title}/${item}" ><c:out value="${item}" /></a>

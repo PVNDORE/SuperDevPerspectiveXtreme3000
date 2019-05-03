@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>DevPerspective</title>
@@ -20,19 +21,26 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-	    <h4>${title} <a href="createPost" class="bouton1">+</a></h4>
-	      <c:forEach var="post" items="${listPost}">
-	      	<dl>
-	      		<dt><c:out value="${post.author.pseudo}" />
-	      			<br> <c:out value="${post.date}" /></dt>
-	        	<dd><c:out value="${post.content}" /></dd>
-	     	</dl>
-		</c:forEach>
-		</div>
+    
+      <div>
+            <form method="POST" action="createPost">
+                <fieldset>
+                    <legend>Contenu de votre post</legend>
+    
+                    <label for="content"><span class="requis"></span></label>
+                    <input type="text" id="content" name="content"  />
+                    <br />
+               </fieldset>
+                <input type="submit" value="Creer votre post" class="bouton1" />
+            </form>
+        </div>
+        
+       
 	</div>
-</div>
+	</div>
+	</div>
 <div id="footer">
-  <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
+  <p>Copyright &copy; 1850 &ndash; 2019 DevPerspective. All rights reserved. </p>
   <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Marc Bariller</a></p>
 </div>
 </body>

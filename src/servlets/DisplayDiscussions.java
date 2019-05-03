@@ -16,6 +16,7 @@ import managers.DiscussionDbManager;
 import managers.StatusDbManager;
 import managers.TopicDbManager;
 import utils.UserUtils;
+import java.text.Normalizer;
 
 public class DisplayDiscussions extends HttpServlet 
 {
@@ -30,7 +31,7 @@ public class DisplayDiscussions extends HttpServlet
 			
 			System.err.print(user);
 			
-			if (user.isAdmin()) {
+			if (user != null && user.isAdmin()) {
 				discussions = manager.dbLoadFromTopic(topicId);
 				visibility = "visible";
 			} else {
@@ -41,6 +42,8 @@ public class DisplayDiscussions extends HttpServlet
 			Topic topic = new TopicDbManager().dbLoad(topicId);
 			
 			if (topic != null) {
+			
+				
 				request.setAttribute("title", topic.getName());
 				request.setAttribute("linkVisibility", visibility);
 				request.setAttribute(Discussion.ATTR_NAME, discussions);

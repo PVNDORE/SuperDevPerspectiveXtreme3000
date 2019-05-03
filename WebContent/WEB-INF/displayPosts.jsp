@@ -1,4 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@page import="managers.TopicDbManager"%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <title>DevPerspective</title>
@@ -21,7 +22,7 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-	    <h4><a href="displayTopics" ><c:out value="Topics" /></a> : <a href="displayDiscussions?topic_id=${param.topic_id}" ><c:out value="${param.topic_name}"  /></a> : ${title} </h4>
+	    <h4><a href="displayTopics" ><c:out value="Topics" /></a> : <a href="displayDiscussions?topic_id=${param.topic_id}" ><c:out value="Discussion" /></a> : ${title} </h4>
 	      <c:forEach var="post" items="${post}">
 	      	<dl>
 	      		<dt><c:out value="${post.author.pseudo}" />

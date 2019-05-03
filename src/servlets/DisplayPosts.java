@@ -19,24 +19,26 @@ public class DisplayPosts extends HttpServlet
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		int discussionId;
+		Integer discussionId = null;
 		
 		if (request.getParameter("discussion_id") != null) {
 			discussionId = Integer.parseInt(request.getParameter("discussion_id"));
 		} else if (request.getAttribute(Post.ATTR_NAME) != null) {
 			discussionId = ((Post) request.getAttribute(Post.ATTR_NAME)).getDiscussionId();
-		} else {
-			return;
 		}
 		
-		List<Post> posts= new PostDbManager().dbLoadFromDiscussion(discussionId);
-		Discussion discussion = new DiscussionDbManager().dbLoad(discussionId);
-		
-		if (discussion != null) {
-			request.setAttribute(Post.ATTR_NAME, posts);
-			request.setAttribute("title", discussion.getTitle());
+		if (discussionId != null) {
+			List<Post> posts= new PostDbManager().dbLoadFromDiscussion(discussionId);
+			Discussion discussion = new DiscussionDbManager().dbLoad(discussionId);
 			
-			this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+			if (discussion != null) {
+				request.setAttribute(Post.ATTR_NAME, posts);
+				request.setAttribute("title", discussion.getTitle());
+				
+				this.getServletContext().getRequestDispatcher("/WEB-INF/displayPosts.jsp").forward(request, response);
+			}
 		}
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
 	}
 }

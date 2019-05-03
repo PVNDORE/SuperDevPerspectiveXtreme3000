@@ -29,10 +29,9 @@ public class DisplayDiscussions extends HttpServlet
 
 				this.getServletContext().getRequestDispatcher("/WEB-INF/displayDiscussions.jsp").forward(request, response);
 			}
-			
-		} else {
-			
-		}
+		} 
+		
+		this.getServletContext().getRequestDispatcher("/WEB-INF/error.jsp").forward(request, response);
 	}
 }
 

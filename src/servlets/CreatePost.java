@@ -26,9 +26,10 @@ public class CreatePost extends HttpServlet
 		throws ServletException, IOException {
 			Post myPost = new Post();
 				
-			// set content
 			myPost.setContent(request.getParameter("content"));
-				
+			myPost.setDatePublished(new Date());
+			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));
+			
 			// set author
 			User myUser = new User();
 			UserUtils myUserUtils = new UserUtils();
@@ -36,9 +37,7 @@ public class CreatePost extends HttpServlet
 				
 			myPost.setAuthor(myUser);
 				
-			// set date
-			myPost.setDatePublished(new Date());
-			myPost.setDiscussionId(Integer.valueOf(request.getParameter("discussion_id")));
+			
 			
 			PostDbManager manager = new PostDbManager();
 			

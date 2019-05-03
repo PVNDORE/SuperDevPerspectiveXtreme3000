@@ -1,0 +1,34 @@
+@import "compass/css3";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+body {
+  background: #000;
+  color: #1D8A1F;
+  overflow: hidden;
+}
+canvas {
+  position: fixed;
+  z-index: -1;
+}
+#message {
+  color: rgb(29, 138, 31);
+  font-family: "Lucida Console";
+  position: fixed;
+  z-index: 10;
+  top: 35%;
+  left: 20%;
+  min-width: 250px;
+  max-width: 50%;
+  padding: 10px;
+  border: 1px solid rgb(13, 82, 14);
+  background: rgb(3, 3, 2);
+}
+h1 {
+  font-size: 1.2em; 
+  border-bottom: 1px solid #0D520E;
+  padding-bottom: .6em;
+  margin-bottom: .8em;
+}

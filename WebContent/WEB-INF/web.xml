@@ -25,6 +25,7 @@
 			<servlet-name>DisplayDiscussions</servlet-name>
 			<url-pattern>/displayDiscussions</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>CreateDiscussion</servlet-name>
 		<servlet-class>servlets.CreateDiscussion</servlet-class>	
@@ -33,6 +34,7 @@
 			<servlet-name>CreateDiscussion</servlet-name>
 			<url-pattern>/createDiscussion</url-pattern>
 	</servlet-mapping>
+	
 	<servlet>
 		<servlet-name>CreatePost</servlet-name>
 		<servlet-class>servlets.CreatePost</servlet-class>	
@@ -41,6 +43,16 @@
 			<servlet-name>CreatePost</servlet-name>
 			<url-pattern>/createPost</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ConnexionInscription</servlet-name>
+		<servlet-class>servlets.ConnexionInscription</servlet-class>	
+	</servlet>
+	<servlet-mapping>
+			<servlet-name>ConnexionInscription</servlet-name>
+			<url-pattern>/connexionInscription</url-pattern>
+	</servlet-mapping>
+	
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>

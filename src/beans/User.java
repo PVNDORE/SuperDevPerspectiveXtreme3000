@@ -9,6 +9,10 @@ import static schemas.UserDbSchema.*;
  * Class representing a user of the app.
  */
 public final class User extends Entity {
+	/**
+	 * Defines the default attribute name when using request to set attribute.
+	 */
+	public static final String ATTR_NAME = "user";
     /**
      * Stores the user's pseudo.
      */

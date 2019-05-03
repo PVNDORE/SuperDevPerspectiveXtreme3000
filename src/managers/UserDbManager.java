@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import beans.User;
 
-public class UserDbManager extends DbManager {
+public final class UserDbManager extends DbManager {
 
     public UserDbManager() {
         super();

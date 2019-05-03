@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Class providing the database connection object.
  */
-public class DbFactory {
+public final class DbFactory {
     /**
      * The db user name.
      */

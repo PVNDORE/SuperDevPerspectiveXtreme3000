@@ -33,7 +33,7 @@ public class CreateDiscussion extends HttpServlet
 				
 				// set status
 				Status myStatus = new Status();
-				myStatus.setName("Création");
+				//myStatus.setName("Crï¿½ation");
 				myDiscussion.setStatut(myStatus);
 				
 				request.setAttribute("discussion", myDiscussion);

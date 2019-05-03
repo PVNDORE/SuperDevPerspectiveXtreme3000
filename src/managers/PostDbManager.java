@@ -12,7 +12,7 @@ import java.util.List;
 
 import beans.Post;
 
-public class PostDbManager extends DbManager {
+public final class PostDbManager extends DbManager {
 	
     public PostDbManager() {
         super();

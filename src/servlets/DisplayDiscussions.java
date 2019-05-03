@@ -29,8 +29,6 @@ public class DisplayDiscussions extends HttpServlet
 			int topicId = Integer.valueOf(request.getParameter("topic_id"));
 			User user = UserUtils.getUser(request);
 			
-			System.err.print(user);
-			
 			if (user != null && user.isAdmin()) {
 				discussions = manager.dbLoadFromTopic(topicId);
 				visibility = "visible";
@@ -38,6 +36,8 @@ public class DisplayDiscussions extends HttpServlet
 				discussions = manager.dbLoadPublic();
 				visibility = "hidden";
 			}
+			
+			String addVisibility = (user != null) ? "visible" : "hidden";
 	
 			Topic topic = new TopicDbManager().dbLoad(topicId);
 			
@@ -46,6 +46,7 @@ public class DisplayDiscussions extends HttpServlet
 				
 				request.setAttribute("title", topic.getName());
 				request.setAttribute("linkVisibility", visibility);
+				request.setAttribute("addVisibility", addVisibility);
 				request.setAttribute(Discussion.ATTR_NAME, discussions);
 				request.setAttribute("topicId", topicId);
 

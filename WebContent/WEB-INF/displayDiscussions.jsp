@@ -22,7 +22,7 @@
 <div id="wrapper">
   <div id="content-wrapper">
     <div id="content">
-     <h4><a href="displayTopics" ><c:out value="Topics" /></a> : ${title} <a href="createDiscussion?topic_id=<%= request.getParameter("topic_id") %>" class="bouton1">+</a> </h4>
+     <h4><a href="displayTopics" ><c:out value="Topics" /></a> : ${title} <a href="createDiscussion?topic_id=<%= request.getParameter("topic_id") %>" style="visibility:${addVisibility}" class="bouton1">+</a> </h4>
 
       <c:forEach var="item" items="${discussion}">
       	<dl>

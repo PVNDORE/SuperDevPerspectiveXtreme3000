@@ -34,16 +34,18 @@ public class LogIn extends HttpServlet
 		
 				myUser = new UserDbManager().dbLoadFromAuth(request.getParameter("email"), request.getParameter("password"));
 				
-				if (myUser != null) {
+				if (myUser != null) 
+				{
 					Cookie myCookie = new Cookie(User.COOKIE, String.valueOf(myUser.getId()));
 					response.addCookie(myCookie);
 					
+					List<Topic> topics = new TopicDbManager().queryAll();
+					
+					request.setAttribute(Topic.ATTR_NAME, topics);	
+					
 					this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
 				}
-				
-				List<Topic> topics = new TopicDbManager().queryAll();
-				
-				request.setAttribute(Topic.ATTR_NAME, topics);				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/displayTopics.jsp").forward(request, response);
+							
+				this.getServletContext().getRequestDispatcher("/WEB-INF/connectionFailed.jsp").forward(request, response);
 			}
 }

@@ -27,10 +27,8 @@ public class DisplayDiscussions extends HttpServlet
 			DiscussionDbManager manager = new DiscussionDbManager();
 			int topicId = Integer.valueOf(request.getParameter("topic_id"));
 			User user = UserUtils.getUser(request);
-			
-			System.err.print(user);
-			
-			if (user.isAdmin()) {
+						
+			if (user != null && user.isAdmin()) {
 				discussions = manager.dbLoadFromTopic(topicId);
 				visibility = "visible";
 			} else {

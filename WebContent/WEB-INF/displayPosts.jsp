@@ -28,11 +28,23 @@
 	        	<dd><c:out value="${post.content}" /></dd>
 	     	</dl>
 		</c:forEach>
-		</div>
+		<div>
+            <form method="POST" action="createPost">
+                <fieldset>
+                    <legend>Contenu de votre post</legend>
+    
+                    <label for="content"><span class="requis"></span></label>
+                    <textarea id="content" name="content" style="width:98%;height:100px;"></textarea>
+                    <br />
+               </fieldset>
+                <input type="submit" value="Creer votre post" class="bouton1" />
+            </form>
+        </div>
 	</div>
 </div>
+</div>
 <div id="footer">
-  <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
+  <p>Copyright &copy; 1850 &ndash; 2019 DevPerspective. All rights reserved. </p>
   <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Marc Bariller</a></p>
 </div>
 </body>

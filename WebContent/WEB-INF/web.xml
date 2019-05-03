@@ -53,15 +53,6 @@
 			<url-pattern>/connexionInscription</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>ConnexionInscription</servlet-name>
-		<servlet-class>servlets.ConnexionInscription</servlet-class>	
-	</servlet>
-	<servlet-mapping>
-			<servlet-name>ConnexionInscription</servlet-name>
-			<url-pattern>/connexionInscription</url-pattern>
-	</servlet-mapping>
-	
 	<jsp-config>
 		<jsp-property-group>
 			<url-pattern>*.jsp</url-pattern>

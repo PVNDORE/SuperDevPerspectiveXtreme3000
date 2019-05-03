@@ -34,8 +34,8 @@ public class DbFactory {
     public DbFactory() {
         this.userName = "root";
         this.password = "root";
-        this.database = "Forum";
-        this.url = "jdbc:mysql://localhost:8889/" + this.database + "?serverTimezone=UTC";
+        this.database = "Exo";
+        this.url = "jdbc:mysql://localhost:8889/" + this.database;
     }
 
     /**

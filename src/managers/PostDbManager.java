@@ -5,6 +5,8 @@ import static schemas.PostDbSchema.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +28,8 @@ public class PostDbManager extends DbManager {
             String query = String.format("INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, ?)", TABLE, DATE, CONTENT,
                     DISCUSSION, USER);
             PreparedStatement st = this.getConnector().prepareStatement(query);
-
-            st.setString(1, post.getDatePublished().toString());
+            DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            st.setString(1, formatter.format(post.getDatePublished()));
             st.setString(2, post.getContent());
             st.setInt(3, post.getDiscussionId());
             st.setInt(4, post.getAuthor().getId());

@@ -27,15 +27,15 @@
         
       </dl>
       <dl>
-        <a href="displayDiscussions?title=developpement oriente object">developpement oriente object</a>
+        <a href="displayDiscussions?title=developpement oriente object">Developpement oriente object</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions?title=gestion de projet">gestion de projet</a>
+        <a href="displayDiscussions?title=gestion de projet">Gestion de projet</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions?title=management d'equipe">management d'equipe</a><br>
+        <a href="displayDiscussions?title=management d'equipe">Management d'equipe</a><br>
         
       </dl>
       

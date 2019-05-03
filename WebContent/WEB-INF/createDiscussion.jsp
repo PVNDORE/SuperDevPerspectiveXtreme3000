@@ -41,7 +41,7 @@
 	</div>
 <div id="footer">
   <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
-  <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Marc Bariller</a></p>
+  <p> Design by <a href="https://fr.linkedin.com/in/marc-bariller" title="SimplyGold">Marc Bariller</a></p>
 </div>
 </body>
 </html>

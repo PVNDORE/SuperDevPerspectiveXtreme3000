@@ -22,15 +22,18 @@
     <div id="content">
     
       <h4>Topics</h4>
+       
       <c:forEach var="item" items="${topic}">
       	<dl>
         	<a href="displayDiscussions?topic_id=${item.id}" ><c:out value="${item.name}" /></a>
      	</dl>
 	  </c:forEach>  
 	</div>
+  </div>
+</div>
 <div id="footer">
-  <p>Copyright &copy; 1850 &ndash; 2019 DevPerspective. All rights reserved. </p>
-  <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Marc Bariller</a></p>
+  <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
+  <p> Design by <a href="https://fr.linkedin.com/in/marc-bariller" title="SimplyGold">Marc Bariller</a></p>
 </div>
 </body>
 </html>

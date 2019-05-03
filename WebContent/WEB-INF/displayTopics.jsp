@@ -27,11 +27,11 @@
         
       </dl>
       <dl>
-        <a href="displayDiscussions?title=developpement oriente object">developpement oriente object</a>
+        <a href="displayDiscussions?title=developpement oriente object">Developpement oriente object</a>
         
       </dl>
       <dl>
-        <a href="displayDiscussions?title=gestion de projet">gestion de projet</a>
+        <a href="displayDiscussions?title=gestion de projet">Destion de projet</a>
         
       </dl>
       <dl>
@@ -43,7 +43,7 @@
        
 	</div>
 <div id="footer">
-  <p>Copyright &copy; 1850 &ndash; 2019 Sixpence. All rights reserved. </p>
+  <p>Copyright &copy; 1850 &ndash; 2019 DevPerspective. All rights reserved. </p>
   <p> Design by <a href="http://www.nikhedonia.com/" title="SimplyGold">Marc Bariller</a></p>
 </div>
 </body>
